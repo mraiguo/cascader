@@ -1,14 +1,14 @@
 webpackJsonp([6],{
 
-/***/ 197:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(198);
+module.exports = __webpack_require__(193);
 
 
 /***/ }),
 
-/***/ 198:
+/***/ 193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40,6 +40,10 @@ var addressOptions = [{
   label: '浙江',
   isLeaf: false,
   value: 'zj'
+}, {
+  label: '北京',
+  isLeaf: false,
+  value: 'bj'
 }];
 
 var Demo = function (_React$Component) {
@@ -70,13 +74,18 @@ var Demo = function (_React$Component) {
       // 动态加载下级数据
       setTimeout(function () {
         targetOption.loading = false;
-        targetOption.children = [{
-          label: targetOption.label + '\u52A8\u6001\u52A0\u8F7D1',
-          value: 'dynamic1'
-        }, {
-          label: targetOption.label + '\u52A8\u6001\u52A0\u8F7D2',
-          value: 'dynamic2'
-        }];
+
+        if (targetOption.value === 'bj') {
+          targetOption.children = [];
+        } else {
+          targetOption.children = [{
+            label: targetOption.label + '\u52A8\u6001\u52A0\u8F7D1',
+            value: 'dynamic1'
+          }, {
+            label: targetOption.label + '\u52A8\u6001\u52A0\u8F7D2',
+            value: 'dynamic2'
+          }];
+        }
         _this.setState({
           options: [].concat(_this.state.options)
         });
@@ -91,7 +100,8 @@ var Demo = function (_React$Component) {
         options: this.state.options,
         loadData: this.loadData,
         onChange: this.onChange,
-        changeOnSelect: true
+        changeOnSelect: true,
+        noData: '无数据'
       },
       __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement('input', { value: this.state.inputValue, readOnly: true })
     );
@@ -104,5 +114,5 @@ __WEBPACK_IMPORTED_MODULE_3_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 /***/ })
 
-},[197]);
+},[192]);
 //# sourceMappingURL=dynamic-options.js.map
